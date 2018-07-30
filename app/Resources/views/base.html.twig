@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+
+        <!-- external css -->
+        <link rel="stylesheet" href="/js/jquery-ui-1.12.0/jquery-ui.min.css">
+        <link rel="stylesheet" href="/bootstrap-4.0.0-alpha.3/dist/css/bootstrap.min.css">
+
+        <!-- css -->
+        <link rel="stylesheet" href="/css/main.css">
+
+
+        <!-- external Javascript -->
+        <script src="/js/jquery-3.1.0.min.js"></script>
+        <script src="/js/jquery-ui-1.12.0/jquery-ui.js"></script>
+        <script src="/js/jquery-ui-1.12.0/jquery-ui.min.js"></script>
+        <script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script>
+        <script src="/bootstrap-4.0.0-alpha.3/docs/dist/js/bootstrap.min.js"></script>
+
+    </head>
+    <body>
+
+
+    {% include 'basePartials/menu.html.twig'   %}
+
+
+    <div class="container theme-showcase" role="main">
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </div>
+    </body>
+</html>

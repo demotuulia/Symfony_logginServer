@@ -1,0 +1,39 @@
+{#
+
+   This is a generic template for paging
+   and work togther with the class AppBundle\Manager\Manager\FrontEndPaging
+
+   This page expects the follwing variables
+
+   pagingForm               a symfony form
+   totalRecords             integer
+   pagingLinks    array
+
+ #}
+
+<script src="/js/paging.js"></script>
+
+{% if totalRecords >0 %}
+
+    <div class="pull-xs-left">
+        {% form_theme pagingForm 'bootstrap_3_layout.html.twig' %}
+        {{ form_start(pagingForm , { 'attr': {'class':  pagingFormClass , 'role' : 'form' } } ) }}
+        {{ form_widget(pagingForm) }}
+        {{ form_end(pagingForm) }}
+    </div>
+
+    <div class="pull-xs-right">
+        <a href="#" id ='ExportExcelLink'><img src="/images/excel.png" > </a>
+        Total amount items : {{ totalRecords }}
+    </div>
+
+{% endif %}
+
+
+<script>
+    <!-- initalize page chnage links -->
+    globalOnChangePagingSelectLink = "{{ pagingLinks.pageSelect }}"
+    globalOnChangePagingNextLink = "{{ pagingLinks.next }}"
+    globalOnChangePagingPreviousLink = "{{ pagingLinks.previous }}"
+    globalOnChangePagingExcelLink = "{{ pagingLinks.excel }}"
+</script>

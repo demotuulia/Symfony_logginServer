@@ -1,0 +1,68 @@
+#
+#  We recreate the table, because it is safe.
+#
+#
+UPDATE `client_systems` SET `pubkey` =
+'-----BEGIN PUBLIC KEY-----
+MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAyb9ULxg0c5JPD1G8OKTX
+Nhz5WZo72/B5o6CiYt2h4ioUa+R5+3Jq9hbD/VRct1q3M8KLewp1D6UUjHOnjHQ4
+TdI4ro18i3798HdAfnTZMx3DiAcKCSdHKehUjrj2mcsZVNyrWN4jp1SV3tLgcQWX
+IL4ghgrJXk48oX2odNenUxqONDXjFhxATU7FXP/+d0ti00TvULexgpJz9LLa/MBX
+zGjiu2eJAzx/8qMhxeWeJ8aC+eOOGDoi/03eJu9S+SKTCYB7VvcqYjmFFQ+gXLm5
+t1GE1g6kAEfAu8q0VHiITrq8x2rDN//OlYnKfY9gAHsrfgWyPDamxKZ3QoXHCdZb
+spg17+iq5fIsoIaY3yi7tQ1aNaWjKoAQpcMEpUYBZNbQYyiTbKvCLxnaMI/oKX1L
+CfKEtO2oezNKgylotYEH5q4BpAz/lnlC4HDorfCt5Tckb56vyUKfPB05KvBhRwaW
+HJGfZa+OHoMsYpoZCeAwl1QVq2mUdpwje7CQt2gpmEjjTEPLH6BR0tGFT0gqFzQC
+eenWT7hVf3T013pxvb49yPP5rPIgBiZgaV+c+KbyXL1XS3iJFaB1mPnzLkk0gVMZ
+9xstTWxN6Fxw9lBT+DkDAGmcnY5T1QQxGujU+VdmBrW5RaJ2m8WUEaYNGKWEhCMg
+IEyr9+hl2DONVns7SRy18YkCAwEAAQ==
+-----END PUBLIC KEY-----'
+WHERE `client_systems`.`client_systems_id` = 1;
+
+UPDATE `client_systems` SET `pubkey` = '-----BEGIN PUBLIC KEY-----
+MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA0xIfYHx0OfWfN4PWtRY5
+iwp1sUjc1aXgryNCF3HnfqYSS3Mur0XgvtbDcgXtUU1qtdhiwT2+oY8f1a5Kup44
+cXQotFMAaz342BhTIczpu64uISRv+t7FkX6v0UfVfz2B7snIboSFfuayGuZljvjK
+VCKPM+dgsyjjMipebGGRxB4E+mVEt0LvScanDprDv9h4RDlSRFMVXw9qv6Z27pQM
+xmZMsjzMk23xbHRu5CKkEWTUBjWqJ9t1c3O5M4IC2/NC4n9AiwvdJe4W3yUFVEMt
+xN3WH17JEhOJ9LVhZVOOuPHEr7gkDWgLcyRwpNcRQSQL6Gak7SnE0uqI1fPUwfRo
+6kiJOpKj9ax4q9spyD5aKt0mlVN8U3aMXpVALMfIRT4zy43KZPsqBUy5IB5+WPO1
+lsIkMx1Md7lPEzN0bOapZaJVScTZ67r8brA3PicpmmqW8nkG39wb+hKqUrpEMo50
+pefiGc1mcvslpb2AQnnnm91m4rbbSbjCnlbXermcX/YEr78oqrtNujVCHR2xvvgL
+TCvSPRwY9SUbhprMab2pc6MSvFBpaNugS90VS4Qei3Ow6Rx0YYVudRUm2HiZR1v9
+lIimm6/v2fADsbJPy60fTscu6iGfo/dKVswxbbmL/d0o4xSFgcUZCUr3Z9c6Rg/c
+5pf4Q7Ma7kH7xrYpmAovVFcCAwEAAQ==
+-----END PUBLIC KEY-----'
+WHERE `client_systems`.`client_systems_id` = 2;
+
+UPDATE `client_systems` SET `pubkey` = '-----BEGIN PUBLIC KEY-----
+MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAr73Pq50+jlQRZgYx6+vn
+m2ib9H1mWmcOZ2qWc/XGMKeKgZEgI02RIe9rEm+gstvRI/gMVGstjdxZWYwZG5RT
+jbMREoZOv3RlA1pqKSmzrLmKowkKcKdG+NwEhe4mWViDvuMgF7/dkDdppZVx8yro
+Q1LlO+N0wrYfCzyRzCp6pZzDGrwp3qsrasqow1I1P2JI8ubpOjEfq0uIAVhboh1a
+E3HujHQKQWP8FTBAHJNWnKMRp1yiUfykgVea7CyU0GLDm39Xr/u9jQFa915PFw2d
+EBSvR1Yq/POK+JakC41LJFO7R+JtN3Tp1qPJ1IWEiu4pu/DqDGuMKj2OrY7zFgqa
+RU+bp9PSUto44nC0YiKXQnxHXMd8iPaNhvG56x+xfz0+aKXCFDQEHlr22sJmMSFT
+wC16Inw5IPCr/hvwhpGgf2Pw0EFi94/LkQiDxpm7llKvv+LbNI9O54mTZGrSak8I
+VvokRg0aszaH9fFDT1Gsi9za76lowPhmUTjNYag2HULoHKKr/rxd0FIxYDWgKFhq
+xrfjvYptrxvNhL0XOL4KnfX/W7xys5gesCA4Q32gDdAEEvEC0GpR9uoDFN0Prxdr
+Es8sKMisLTBYs70MAq+mgJzR6LwqjxWdc5RCr0JD2Kayd/IovzCVyBPtnbKWotYj
+OJf4rr6if6sgaX0eXjWi4jMCAwEAAQ==
+-----END PUBLIC KEY-----'
+WHERE `client_systems`.`client_systems_id` = 3;
+
+UPDATE `client_systems` SET `pubkey` = '-----BEGIN PUBLIC KEY-----
+MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAupZvgbA8otQag/tB9aPl
+b5kWTMe/CyZxEql0/j3noJgitUM0cQ49qCxICxN58J+PzX1WoID3pn9pupmu7SS0
+mbYga1VsaxFUDYO4JY9BF8ldg9q3yndtKoR/y4eDD3eC4q6Dhi13KSdZrCbADjds
+T/b545RDJ+/FHiFk+APPoTaXtUtkp24KBS6tiDnO/ZvGkFvB2UsMuSAjq+6zHbpf
+x3NA7tmS2DX3ZTNBMiFWLL8fsiEf5H8r6usUN+QE6FJua41xWqT1ZthPzX3RYjZZ
+KgG0Wql5xSMk/POHCoD/oB3wznIRnhYgeQegCN7nQjuPgh+GTUkuXPShKTTRvSSl
+EWitizUIfp9aYx2gqYHH2uLUiiwekB79kgftwRhb4gI2d567wvhNRK+mBuZUBl4P
+cvabkw72UJryrirc94FT/AChV/f9JdnG6EzDo2W26trylyTTRQ9988OZbT9JRrah
+4glr+E53td2+9lB4TCUCqnxEy1wuoUbWOkVlP+vS0Thrcomapw2YZiH0Kg83GyVJ
+/9I35E/dlJHEx+2E/dRUuyHnGF4Usj0xkQ9ww7Y8kN/j8x4PG8P6aP8bzzu81NXN
+sjUVEray9KJT7kOd8ePKBijX+LS5EXJHjU/ZQ6ZX7X3LWXHXd+3wSSV8qWwtw05b
+K2/3RTuNRalcwCYQL35SepcCAwEAAQ==
+-----END PUBLIC KEY-----'
+WHERE `client_systems`.`client_systems_id` = 4;

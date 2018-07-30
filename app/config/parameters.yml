@@ -1,0 +1,69 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: loggingServer
+    database_user: root
+    database_password: 123
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: ThisTokenIsNotSoSecretChangeIt
+
+    # base url for all api requests
+    api_base_url: http://loggingserver.io/api
+    #host
+    host: http://loggingserver.io
+
+    # pagination max amount of item per page on the lists 2
+    list_items_per_page: 20
+
+    #from email address when sending an alert email
+    alert_from_mail: imtoioaaver@imotions.nl
+
+    # define  Main navigation
+    main_navgation:
+      -
+          route : /login/
+          label: Login
+          allowed_roles:
+               - ROLE_GUEST
+      -
+          route : /logout/
+          label: Logout
+          allowed_roles:
+              - ROLE_ADMIN
+              - ROLE_USER
+
+      -
+          route : /list/
+          label: Log list
+          allowed_roles:
+              - ROLE_ADMIN
+              - ROLE_USER
+
+      -
+          route : /mailalerts/
+          label: Mail alerts
+          allowed_roles:
+              - ROLE_ADMIN
+              - ROLE_USER
+
+      -
+          route : /systems/
+          label: Systems
+          allowed_roles:
+              - ROLE_ADMIN
+
+      -
+          route : /users/
+          label: Users
+          allowed_roles:
+              - ROLE_ADMIN
+
+      -
+          route : /logslevels/
+          label: Log Levels
+          allowed_roles:
+              - ROLE_ADMIN

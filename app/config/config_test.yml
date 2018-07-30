@@ -1,0 +1,17 @@
+#Here we use the same config as for the dev envinroment, the only execption is
+#the database. Here we use separate test database
+imports:
+    - { resource: config_dev.yml }
+    - { resource: parameters_test.yml }
+framework:
+    test: ~
+    session:
+        storage_id: session.storage.mock_file
+    profiler:
+        collect: false
+
+web_profiler:
+    toolbar: false
+    intercept_redirects: false
+
+

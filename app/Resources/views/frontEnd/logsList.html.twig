@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <p>
+        <a href="/editLogLevel/new" class="btn btn-success btn-sm" role="button" >
+            Insert Log Level
+        </a>
+    </p>
+
+    <table class="{{ tableTypeClass }}">
+        {% include 'frontEnd/partials/standard/tableHeader.html.twig'
+        with {'headerItems': [ 'id' , 'name' , ' ' , ' '] } only
+        %}
+
+        {% for logLevel in list %}
+            <tr>
+                <td>{{ logLevel.id }}</td>
+                <td>{{ logLevel.name }}</td>
+                <td width="10%">
+                    <a href="/editLogLevel/{{ logLevel.id }}"  class="btn btn-primary btn-sm" role="button">
+                        Edit
+                    </a>
+                </td>
+
+                <td width="10%">
+                    <a href="/deleteLogLevel/{{ logLevel.id }}"  class="btn btn-danger btn-sm" role="button">
+                        Delete
+                    </a>
+                </td>
+
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+

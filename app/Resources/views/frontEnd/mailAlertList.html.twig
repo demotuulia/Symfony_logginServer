@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+<p>
+    <a href="/editmailalert/new" class="btn btn-success btn-sm" role="button" >
+        Insert Alert
+    </a>
+</p>
+
+    <table class="{{ tableTypeClass }}">
+        {% include 'frontEnd/partials/standard/tableHeader.html.twig'
+        with {'headerItems': [ 'id' , 'System' , 'Level', 'Type', ' ' , ' '] } only
+        %}
+
+
+        </thead>
+
+            {% for mailAlert in list %}
+            <tr>
+
+                    {% for filterRow in mailAlert.filters %}
+                        {% for key,  filterItem in filterRow %}
+                            <td>
+                                {{ filterItem.filterField }} {{ filterItem.operator}} {{  filterItem.valueLabbel}}
+                            </td>
+                        {% endfor %}
+                    {% endfor %}
+
+                    <td>
+                        <a href="/editmailalert/{{ mailAlert.mailAlertId }}"  class="btn btn-primary btn-sm" role="button">
+                               Edit
+                        </a>
+                    </td>
+
+                    <td>
+                        <a href="/deletemailalert/{{ mailAlert.mailAlertId }}"  class="btn btn-danger btn-sm" role="button">
+                                Delete
+                        </a>
+                    </td>
+
+            </tr>
+            {% endfor %}
+    </table>
+{% endblock %}
+

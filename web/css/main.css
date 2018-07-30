@@ -1,0 +1,28 @@
+/*
+*
+* This sheet contains the necessary CSS which you cannot define wiht Bootstrap classes and Symfony
+*
+* Try to keep this as short as possible
+*/
+
+/*
+*Some spacing to forms
+*/
+.form-group > * {
+    margin:5px 5px;
+}
+
+
+/*
+* Set the width of the select fileds in #editMailAlert an #loginForm
+*/
+
+#editMailAlert select,
+#loginForm input,
+#editUser select,
+#editUser input,
+#editSystem select,
+#editSystem input
+{
+    width: 25%;
+}

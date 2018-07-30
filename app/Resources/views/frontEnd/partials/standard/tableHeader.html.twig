@@ -1,0 +1,18 @@
+{#
+    A standard table header.
+    As parameter you give an array of header items
+
+    Example:
+
+    {% include 'frontEnd/partials/standardTable/tableHeader.html.twig'
+                with {'headerItems': [ 'id' , 'Name' , 'Role', 'Email', ' ' , ' '] } only
+    %}
+
+#}
+<thead class="thead-inverse">
+    {% for item in headerItems %}
+        <th>
+            <span class="tag">{{ item }}</span>
+        </th>
+    {% endfor %}
+</thead>

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <p>
+        <a href="/editsystem/new" class="btn btn-success btn-sm" role="button" >
+            Insert System
+        </a>
+    </p>
+
+    <table class="{{ tableTypeClass }}">
+        {% include 'frontEnd/partials/standard/tableHeader.html.twig'
+            with {'headerItems': [ 'id' , 'name' , ' ' , ' '] } only
+        %}
+
+        {% for system in list %}
+            <tr>
+                <td>{{ system.systemid }}</td>
+                <td>{{ system.name }}</td>
+                <td width="10%">
+                    <a href="/editsystem/{{ system.systemid }}"  class="btn btn-primary btn-sm" role="button">
+                        Edit
+                    </a>
+                </td>
+
+                <td width="10%">
+                    <a href="/deletesystem/{{ system.systemid }}"  class="btn btn-danger btn-sm" role="button">
+                        Delete
+                    </a>
+                </td>
+
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+

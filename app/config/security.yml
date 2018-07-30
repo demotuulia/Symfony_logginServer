@@ -1,0 +1,75 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+
+   # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+   # Password Encrypted by
+   # > php bin/console security:encode-password
+   #
+   # Symfony Password Encoder Utility
+   # ================================
+   #
+   #  Type in your password to be encoded:
+   #  >(123)
+   #
+   #  ------------------ ---------------------------------------------------------------
+   #   Key                Value
+   #  ------------------ ---------------------------------------------------------------
+   #   Encoder used       Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder
+   #   Encoded password   $2y$12$sBuSBzqLEEAALYB/JcE1I.gZWx1cPUOmDCaSwl5Kd/JDF3NhGUOWG
+   #  ------------------ ---------------------------------------------------------------
+   #
+   #  ! [NOTE] Bcrypt encoder used: the encoder generated its own built-in salt.
+   #
+   #
+   #  [OK] Password encoding succeeded
+   #
+   ##########################################################################################
+
+    providers:
+           default:
+               entity:
+                 class: AppBundle:User
+                 property: username
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+            form_login:
+               login_path: login
+               check_path: login
+            logout:
+               path:   /logout
+               invalidate_session: false
+
+        main:
+            anonymous: ~
+            form_login:
+               login_path: login
+               check_path: login
+
+
+    encoders:
+        AppBundle\Entity\User:
+            algorithm: bcrypt
+
+            # activate different ways to authenticate
+
+            # http_basic: ~
+            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+
+            # form_login: ~
+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+    access_control:
+        - { path: ^/list/, roles: [ROLE_ADMIN,  ROLE_USER] }
+        - { path: ^/mailalerts/, roles: [ROLE_ADMIN,  ROLE_USER] }
+        - { path: ^/editmailalert/, roles: [ROLE_ADMIN,  ROLE_USER] }
+        - { path: ^/deletemailalert/, roles: [ROLE_ADMIN,  ROLE_USER] }
+        - { path: ^/systems/, roles: [ROLE_ADMIN] }
+        - { path: ^/editsystem/, roles: [ROLE_ADMIN] }
+        - { path: ^/users/, roles: [ROLE_ADMIN] }
+        - { path: ^/edituser/, roles: [ROLE_ADMIN] }
+        - { path: ^/deleteuser/, roles: [ROLE_ADMIN] }
+

@@ -1,0 +1,211 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+
+#################################################################
+# Base class of all manager classes in folder AppBundle\Manager\Manager
+# All Manager classes, except memeber of AppBundle\Manager\Manager
+# should inherit from this
+#
+     AppBundle.Manager:
+         class: AppBundle\Manager\Manager
+         abstract: true
+#################################################################
+# Member classes of class AppBundle.Manager
+#
+#
+#http exeption manager
+     AppBundle.httpExceptionManager:
+          class: AppBundle\Manager\HttpExceptionManager
+          
+# Manager for the table log staments on this server to the log files
+     AppBundle.MonoLogManager:
+         class: AppBundle\Manager\MonoLog
+         arguments: ['@logger']
+
+################################################################         
+# Base class of all entity Managers
+# All entity managers should inherit form this class.
+
+     AppBundle.EntityManager:
+         class: AppBundle\Manager\Manager\EntityManager
+         abstract: true
+         
+         
+#Manager for the table clients_systems
+     AppBundle.ClientSystemsManager:
+         class: AppBundle\Manager\Manager\Entity\ClientSystems
+         calls:
+            - [setManagerParams, ['@doctrine.orm.entity_manager', '@AppBundle.MonoLogManager', '@AppBundle.httpExceptionManager', '@service_container']]
+            - [setEntityManagerParams, ['@validator', 'systemid', 'AppBundle:ClientSystems']]
+
+# Manager for the table logs
+     AppBundle.LogsManager:
+         class: AppBundle\Manager\Manager\Entity\Logs
+         calls:
+            - [setManagerParams, ['@doctrine.orm.entity_manager', '@AppBundle.MonoLogManager', '@AppBundle.httpExceptionManager', '@service_container']]
+            - [setEntityManagerParams, ['@validator', 'logid', 'AppBundle:Logs']]
+
+# Manager for the table logs_types
+     AppBundle.LogsTypesManager:
+         class: AppBundle\Manager\Manager\Entity\LogsTypes
+         calls:
+            - [setManagerParams, ['@doctrine.orm.entity_manager', '@AppBundle.MonoLogManager', '@AppBundle.httpExceptionManager', '@service_container']]
+            - [setEntityManagerParams, ['@validator', 'id', 'AppBundle:LogsTypes']]
+
+# Manager for the table logs_levels
+     AppBundle.LogsLevelsManager:
+         class: AppBundle\Manager\Manager\Entity\LogsLevels
+         calls:
+            - [setManagerParams, ['@doctrine.orm.entity_manager', '@AppBundle.MonoLogManager', '@AppBundle.httpExceptionManager', '@service_container']]
+            - [setEntityManagerParams, ['@validator', 'id', 'AppBundle:LogsLevels']]
+
+
+
+# Manager for the table app_users
+     AppBundle.UserManager:
+         class: AppBundle\Manager\Manager\Entity\User
+         calls:
+            - [setManagerParams, ['@doctrine.orm.entity_manager', '@AppBundle.MonoLogManager', '@AppBundle.httpExceptionManager', '@service_container']]
+            - [setEntityManagerParams, ['@validator', 'id', 'AppBundle:User']]
+
+
+
+# Manager for the table mail_alert
+     AppBundle.MailAlert:
+         class: AppBundle\Manager\Manager\Entity\MailAlert
+         arguments: ['@AppBundle.MailAlertFilter']
+         calls:
+            - [setManagerParams, ['@doctrine.orm.entity_manager', '@AppBundle.MonoLogManager', '@AppBundle.httpExceptionManager', '@service_container']]
+            - [setEntityManagerParams, ['@validator', 'mailAlertId', 'AppBundle:MailAlert']]
+
+
+
+# Manager for the table mail_alert_filter
+     AppBundle.MailAlertFilter:
+         class: AppBundle\Manager\Manager\Entity\MailAlertFilter
+         calls:
+            - [setManagerParams, ['@doctrine.orm.entity_manager', '@AppBundle.MonoLogManager', '@AppBundle.httpExceptionManager', '@service_container']]
+            - [setEntityManagerParams, ['@validator', 'mailAlertFilterId', 'AppBundle:MailAlertFilter']]
+
+
+
+# Manager for the table roles
+     AppBundle.RolesManager:
+         class: AppBundle\Manager\Manager\Entity\Roles
+         calls:
+            - [setManagerParams, ['@doctrine.orm.entity_manager', '@AppBundle.MonoLogManager', '@AppBundle.httpExceptionManager', '@service_container']]
+            - [setEntityManagerParams, ['@validator', 'id', 'AppBundle:Roles']]
+
+################################################################         
+# Base class of all controller managers
+# Contorller manager include functions of the controllers
+#
+# All contoller managera should inherit form this class.
+#
+     AppBundle.ControllerManager:
+         class: AppBundle\Manager\Manager\ControllerManager
+         abstract: true
+
+     AppBundle.LogsListControllerManager:
+         class: AppBundle\Manager\Manager\Controller\LogsListController
+         calls:
+            - [setManagerParams, ['@doctrine.orm.entity_manager', '@AppBundle.MonoLogManager', '@AppBundle.httpExceptionManager', '@service_container']]
+           
+     AppBundle.MailAlertsController:
+         class: AppBundle\Manager\Manager\Controller\MailAlertsController
+         calls:
+            - [setManagerParams, ['@doctrine.orm.entity_manager', '@AppBundle.MonoLogManager', '@AppBundle.httpExceptionManager', '@service_container']]
+
+     AppBundle.LoginController:
+         class: AppBundle\Manager\Manager\Controller\LoginController
+         calls:
+            - [setManagerParams, ['@doctrine.orm.entity_manager', '@AppBundle.MonoLogManager', '@AppBundle.httpExceptionManager', '@service_container']]
+
+     AppBundle.UsersControllerManager:
+         class: AppBundle\Manager\Manager\Controller\UsersController
+         calls:
+            - [setManagerParams, ['@doctrine.orm.entity_manager', '@AppBundle.MonoLogManager', '@AppBundle.httpExceptionManager', '@service_container']]
+
+     AppBundle.SystemsControllerManager:
+        class: AppBundle\Manager\Manager\Controller\SystemsController
+        calls:
+            - [setManagerParams, ['@doctrine.orm.entity_manager', '@AppBundle.MonoLogManager', '@AppBundle.httpExceptionManager', '@service_container']]
+
+     AppBundle.LogLevelsControllerManager:
+        class: AppBundle\Manager\Manager\Controller\LogLevelsController
+        calls:
+            - [setManagerParams, ['@doctrine.orm.entity_manager', '@AppBundle.MonoLogManager', '@AppBundle.httpExceptionManager', '@service_container']]
+
+
+##################################################################
+# Misc classes in folder AppBundle\Manager\Manager
+#
+
+
+#Authorization manager
+#A class for API auhtorization
+     AppBundle.ApiAuthorizationManager:
+          class: AppBundle\Manager\Manager\ApiAuthorization
+          arguments: ['@AppBundle.ClientSystemsManager']
+          calls:
+             - [setManagerParams, ['@doctrine.orm.entity_manager', '@AppBundle.MonoLogManager', '@AppBundle.httpExceptionManager', '@service_container']]
+
+#FrontEndPaging manager
+#A class to manage an item list with paging and sort 
+     AppBundle.FrontEndPagingManager:
+          class: AppBundle\Manager\Manager\FrontEndPaging
+          calls:
+             - [setManagerParams, ['@doctrine.orm.entity_manager', '@AppBundle.MonoLogManager', '@AppBundle.httpExceptionManager', '@service_container']]
+             
+ 
+#Form manager
+#A class to render symfony forms
+     AppBundle.FormManager:
+          class: AppBundle\Manager\Manager\Form
+          calls:
+             - [setManagerParams, ['@doctrine.orm.entity_manager', '@AppBundle.MonoLogManager', '@AppBundle.httpExceptionManager', '@service_container']]            
+
+
+
+#Mail manager
+#A class to send emails
+     AppBundle.EmailManager:
+          class: AppBundle\Manager\Manager\Email
+          calls:
+             - [setManagerParams, ['@doctrine.orm.entity_manager', '@AppBundle.MonoLogManager', '@AppBundle.httpExceptionManager', '@service_container']]
+
+
+#Menu manager
+#A class to manage the menus
+     AppBundle.menuManager:
+          class: AppBundle\Manager\Manager\Menu
+          calls:
+             - [setManagerParams, ['@doctrine.orm.entity_manager', '@AppBundle.MonoLogManager', '@AppBundle.httpExceptionManager', '@service_container']]
+
+#Bootstrap manager
+#A class to manage the bootsrap classes
+     AppBundle.bootstrapManager:
+          class: AppBundle\Manager\Manager\Bootstrap
+          calls:
+             - [setManagerParams, ['@doctrine.orm.entity_manager', '@AppBundle.MonoLogManager', '@AppBundle.httpExceptionManager', '@service_container']]
+
+
+#Command manager
+#A class to excecute Symfony console commands
+     AppBundle.consoleCommandManager:
+          class: AppBundle\Manager\Manager\ConsoleCommand
+          calls:
+             - [setManagerParams, ['@doctrine.orm.entity_manager', '@AppBundle.MonoLogManager', '@AppBundle.httpExceptionManager', '@service_container']]
+
+
+
+#Excel manager
+#A class to export to Excel
+     AppBundle.excelManager:
+          class: AppBundle\Manager\Manager\Excel
+          calls:
+             - [setManagerParams, ['@doctrine.orm.entity_manager', '@AppBundle.MonoLogManager', '@AppBundle.httpExceptionManager', '@service_container']]

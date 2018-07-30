@@ -1,0 +1,88 @@
+{#
+ This is a generic template for list table
+ and work togther with the class AppBundle\Manager\Manager\FrontEndPaging
+
+   To render a table you must provide 2 arrays:
+   . 'listHeaderItems'      Table header items with possible sort links
+   . 'list'             Items to rendender in the table
+
+   Example
+
+   We have 2 colums 'Id' and 'Date' and 2 rows
+
+    'listHeaderItems'
+    ---------------
+   array (
+      0 =>
+        array (
+        'label' => 'Id',
+        ),
+
+      1 =>
+      array (
+        'label' => 'Date',
+        'sortItem' => 'L.timestamp',
+        'sortLink' => '/list/?page=1&sort=L.timestamp&sortDir=DESC',
+      ),
+    )
+
+
+    list
+    ---------
+
+    array (
+          0 =>
+          array (
+            'logid' => 16,
+            'timestamp' => '2016-07-24 11:26:29',
+            'class' => 'table_succes'  // if not in use give ' '
+          ),
+          1 =>
+          array (
+            0 =>
+            'logid' => 18,
+            'timestamp' => '2016-07-24 11:26:29',
+            'class' => 'table-danger'  // if not in use give ' '
+          )
+    )
+
+#}
+
+
+{% if totalRecords >0 %}
+
+    <table  class="{{ listTableTypeClass }}">
+        {# header #}
+        <thead class="thead-inverse">
+        <tr>
+            {% for item in listHeaderItems %}
+                <th>
+                    {% if item.sortLink is  defined %}
+                        <a href="{{ item.sortLink }}" >
+                    {% endif %}
+                        <span class="tag">{{ item.label }}</span>
+                    {% if item.sortLink is  defined %}
+                    </a>
+                    {% endif %}
+                </th>
+            {% endfor %}
+        </tr>
+        </thead>
+
+        {# Table rows #}
+        {% for item in list %}
+            <tr class="{{ item.class }}">
+                {% for key, child in item  %}
+                    {% if key != 'class' %}
+                    <td> {{ child }}</td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+
+{% else %}
+
+    No records found for this selection.
+
+{% endif %}

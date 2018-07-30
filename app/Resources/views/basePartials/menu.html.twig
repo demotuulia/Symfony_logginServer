@@ -1,0 +1,32 @@
+
+<nav class="navbar navbar-dark bg-inverse">
+    <div class="container">
+
+        <div class="pull-xs-left">
+            <img src="/images/logo.png">
+        </div>
+
+        <div class="pull-xs-right text-warning tag">
+            {% if currentUserName != '' %}
+                You are logged in as: {{ currentUserName }}&nbsp;&nbsp;&nbsp;
+            {% endif %}
+        </div>
+
+        <div class="pull-xs-left">
+            <ul class="nav navbar-nav">
+                {% for item in mainNavigation %}
+                    <li class="nav-item {{ item.activeClass }}"  >
+                        <a href="{{ item.route }}" class="nav-link">
+                            {{ item.label }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+
+</nav> <!-- /navbar -->
+
+<div class="clearfix">&nbsp;</div>
+
